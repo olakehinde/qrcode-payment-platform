@@ -27,3 +27,5 @@ Route::get('/home', 'HomeController@index');
 Route::resource('qrcodes', 'QrcodeController');
 
 Route::resource('roles', 'RoleController');
+
+Route::resource('transactions', 'TransactionController');
