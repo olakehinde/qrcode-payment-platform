@@ -22,6 +22,7 @@ class CreateTransactionsTable extends Migration
             $table->string('payment_method');
             $table->string('status')->default('initiated');
             $table->longText('message')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
