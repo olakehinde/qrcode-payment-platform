@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('qrcode_id');
             $table->integer('qrcode_owner_id')->nullable();
             $table->float('amount', 10, 2);
+            $table->string('payment_method');
             $table->string('status')->default('initiated');
             $table->longText('message')->nullable();
             $table->timestamps();
