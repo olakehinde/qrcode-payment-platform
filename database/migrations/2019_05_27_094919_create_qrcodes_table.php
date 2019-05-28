@@ -15,7 +15,7 @@ class CreateQrcodesTable extends Migration
     {
         Schema::create('qrcodes', function (Blueprint $table) {
             $table->increments('id');
-            $table->increments('user_id');
+            $table->integer('user_id');
             $table->string('website')->nullable();
             $table->string('company_name');
             $table->string('product_name');
