@@ -7,7 +7,7 @@
 </li>
 
 <li class="{{ Request::is('transactions*') ? 'active' : '' }}">
-    <a href="{!! route('transactions.index') !!}"><i class="fa fa-arrow-up"></i><span>Transactions</span></a>
+    <a href="{!! route('transactions.index') !!}"><i class="fa fa-line-chart"></i><span>Transactions</span></a>
 </li>
 
 <li class="{{ Request::is('users*') ? 'active' : '' }}">
