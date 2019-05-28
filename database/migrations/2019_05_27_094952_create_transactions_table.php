@@ -15,6 +15,12 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('qrcode_id');
+            $table->integer('qrcode_owner_id')->nullable();
+            $table->float('amount', 10, 2);
+            $table->string('status')->default('initiated');
+            $table->longText('message')->nullable();
             $table->timestamps();
         });
     }
