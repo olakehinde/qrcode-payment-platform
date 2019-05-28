@@ -11,7 +11,13 @@
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "infyomlabs/laravel-generator": "5.7.x-dev",
+        "laravelcollective/html": "^5.7.0",
+        "infyomlabs/adminlte-templates": "5.7.x-dev",
+        "infyomlabs/swagger-generator": "dev-master",
+        "appointer/swaggervel": "dev-master",
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
