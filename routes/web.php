@@ -23,3 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('qrcodes', 'QrcodeController');
