@@ -21,6 +21,7 @@ class CreateQrcodesTable extends Migration
             $table->string('product_name');
             $table->string('product_url')->nullable();
             $table->string('callback_url');
+            $table->string('qrcode_path')->nullable();
             $table->float('amount', 10, 2);
             $table->tinyInteger('status');
             $table->timestamps();
