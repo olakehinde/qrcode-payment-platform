@@ -23,7 +23,7 @@ class CreateQrcodesTable extends Migration
             $table->string('callback_url');
             $table->string('qrcode_path')->nullable();
             $table->float('amount', 10, 2);
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default(1)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
