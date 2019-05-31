@@ -2,9 +2,9 @@
     <table class="table" id="qrcodes-table">
         <thead>
             <tr>
-                <th>Website</th>
                 <th>Product Name</th>
-                <th>Amount (in naira)</th>
+                <th>Website</th>
+                <th>Amount (in &#x20A6;)</th>
                 <th>Status</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -12,8 +12,8 @@
         <tbody>
         @foreach($qrcodes as $qrcode)
             <tr>
-                <td>{!! $qrcode->website !!}</td>
                 <td>{!! $qrcode->product_name !!}</td>
+                <td>{!! $qrcode->website !!}</td>
                 <td>{!! $qrcode->amount !!}</td>
                 <td>{!! ($qrcode->status == 1 ? '<i class="fa fa-check-square text-success"></i> Active' : '<i class="fa fa-times-circle text-danger"></i> Inactive') !!}</td>
                 <td>
