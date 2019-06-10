@@ -6,7 +6,8 @@
             Role
         </h1>
 
-        <a href="{!! route('roles.edit', [$role->id]) !!}" class='btn btn-primary pull-right ' style="padding-bottom: 5px;"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+        <a href="{!! route('roles.edit', [$role->id]) !!}" class='btn btn-primary pull-right ' style="padding-bottom: 5px;">
+            <i class="glyphicon glyphicon-edit"></i> Edit</a>
     </section>
     <div class="content" style="margin-top: 5px;">
         <div class="clearfix"></div>
