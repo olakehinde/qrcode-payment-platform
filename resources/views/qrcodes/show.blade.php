@@ -5,10 +5,12 @@
         <h1 class="col-md-6 pull-left">
             Qrcode
         </h1>
-
+        
+        @if(Auth::user()->id == $qrcode->user_id)
         <a href="{!! route('qrcodes.edit', [$qrcode->id]) !!}" class='btn btn-primary pull-right ' style="padding-bottom: 5px;">
             <i class="glyphicon glyphicon-edit"></i> Edit
         </a>
+        @endif
     </section>
     <div class="content" style="margin-top: 5px;">
         <div class="clearfix"></div>
