@@ -77,5 +77,11 @@ class Qrcode extends Model
         'status' => 'required'
     ];
 
+    /**
+    * This qrcode has many transactions 
+    */
+    public function transactions() {
+        return $this->hasMany('App\Models\Transaction'); 
+    }
     
 }

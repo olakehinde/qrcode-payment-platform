@@ -66,5 +66,11 @@ class User extends Model
         'password' => 'required'
     ];
 
+    /**
+    * This user has many transactions 
+    */
+    public function transactions() {
+        return $this->hasMany('App\Models\Transaction'); 
+    }
     
 }
