@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Transaction
+            Transaction ID: {!! $transaction->id !!}
         </h1>
     </section>
     <div class="content">
