@@ -12,7 +12,9 @@
         <tbody>
         @foreach($qrcodes as $qrcode)
             <tr>
-                <td>{!! $qrcode->product_name !!}</td>
+                <td>
+                    <a href="{!! route('qrcodes.show', [$qrcode->id]) !!}">{!! $qrcode->product_name !!}</a>
+                </td>
                 <td>{!! $qrcode->website !!}</td>
                 <td>{!! $qrcode->amount !!}</td>
                 <td>{!! ($qrcode->status == 1 ? '<i class="fa fa-check-square text-success"></i> Active' : '<i class="fa fa-times-circle text-danger"></i> Inactive') !!}</td>
