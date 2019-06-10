@@ -48,13 +48,13 @@
         <!-- Created At Field -->
         <div class="form-group">
             {!! Form::label('created_at', 'Created At:') !!}
-            <p>{!! $qrcode->created_at !!}</p>
+            <p>{!! $qrcode->created_at->format('D d M, Y') !!}</p>
         </div>
 
         <!-- Updated At Field -->
         <div class="form-group">
             {!! Form::label('updated_at', 'Updated At:') !!}
-            <p>{!! $qrcode->updated_at !!}</p>
+            <p>{!! $qrcode->updated_at->format('D d M, Y') !!}</p>
         </div>
     @endif
 </div>
