@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1 class="pull-left">User - {!! $user->name !!}</h1>
         <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('users.edit', ['id' => $user->id]) !!}">Edit Profile</a>
+           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('users.edit', ['id' => $user->id]) !!}"><i class="fa fa-pencil"></i> Edit Profile</a>
         </h1>
     </section>
     <div class="content">
