@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1 class="col-md-6 pull-left">
-            Role
+            Role - {{ $role->name }}
         </h1>
 
         <a href="{!! route('roles.edit', [$role->id]) !!}" class='btn btn-primary pull-right ' style="padding-bottom: 5px;">
