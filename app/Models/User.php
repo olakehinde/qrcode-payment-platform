@@ -72,5 +72,12 @@ class User extends Model
     public function transactions() {
         return $this->hasMany('App\Models\Transaction'); 
     }
+
+    /**
+    * This user has has (belongsTo) a role 
+    */
+    public function role() {
+        return $this->belongsTo('App\Models\Role'); 
+    }
     
 }
