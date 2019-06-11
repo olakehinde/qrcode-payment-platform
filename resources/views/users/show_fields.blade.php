@@ -12,8 +12,8 @@
 
 <!-- Role Id Field -->
 <div class="form-group">
-    {!! Form::label('role_id', 'Role Id:') !!}
-    <p>{!! $user->role_id !!}</p>
+    {!! Form::label('role_id', 'Role:') !!}
+    <p>{!! $user->role['name'] !!}</p>
 </div>
 
 <!-- Email Field -->
@@ -28,27 +28,8 @@
     <p>{!! $user->email_verified_at !!}</p>
 </div>
 
-<!-- Password Field -->
-<div class="form-group">
-    {!! Form::label('password', 'Password:') !!}
-    <p>{!! $user->password !!}</p>
-</div>
-
-<!-- Remember Token Field -->
-<div class="form-group">
-    {!! Form::label('remember_token', 'Remember Token:') !!}
-    <p>{!! $user->remember_token !!}</p>
-</div>
-
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $user->created_at !!}</p>
+    {!! Form::label('created_at', 'Joined:') !!}
+    <p>{!! $user->created_at->format('D d M, Y h:i:s') !!}</p>
 </div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $user->updated_at !!}</p>
-</div>
-
