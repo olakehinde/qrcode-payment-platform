@@ -25,7 +25,7 @@
 <!-- Email Verified At Field -->
 <div class="form-group">
     {!! Form::label('email_verified_at', 'Email Verified At:') !!}
-    <p>{!! $user->email_verified_at !!}</p>
+    <p>{!! $user->email_verified_at->format('D d M, Y h:i:s') !!}</p>
 </div>
 
 <!-- Created At Field -->
