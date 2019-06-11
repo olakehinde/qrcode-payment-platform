@@ -8,7 +8,7 @@
     <!-- Role Field -->
     <div class="form-group col-sm-6">
         <label for="role_id">Role:</label>
-        <select class="form-control" id="role_id">
+        <select class="form-control" id="role_id" name="role_id">
             <option value="{{ $user->role['id'] }}">{{ $user->role['name'] }}</option>
             @foreach($roles as $role)
                 <option value="{{ $role->id }}">{{ $role->name }}</option>
