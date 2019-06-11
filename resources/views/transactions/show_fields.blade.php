@@ -26,7 +26,7 @@
 
 <!-- Qrcode Owner Field -->
 <div class="form-group">
-    {!! Form::label('qrcode_owner_id', 'Qrcode Owner:') !!}
+    {!! Form::label('qrcode_owner_id', 'Product Owner:') !!}
     <p>
         <a href="/users/{!! $transaction->qrcode_owner['id'] !!}">
             <b>{!! $transaction->qrcode_owner['name'] !!}</b>
