@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Role;
 
 class UserController extends AppBaseController
 {
@@ -101,7 +102,8 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+        $roles = Role::all();
+        return view('users.edit')->with('user', $user)->with('roles', $roles);
     }
 
     /**
