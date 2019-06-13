@@ -74,10 +74,17 @@ class User extends Model
     }
 
     /**
-    * This user has has (belongsTo) a role 
+    * This user (belongsTo) a role 
     */
     public function role() {
         return $this->belongsTo('App\Models\Role'); 
+    }
+
+     /**
+    * This user has many qrcodes 
+    */
+    public function qrcodes() {
+        return $this->hasMany('App\Models\Qrcode'); 
     }
     
 }
