@@ -82,7 +82,8 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.show')->with('user', $user);
+        $transactions = $user->transactions;
+        return view('users.show')->with('user', $user)->with('transactions', $transactions);
     }
 
     /**
