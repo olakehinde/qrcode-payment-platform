@@ -66,3 +66,13 @@
         <img src="{!! asset($qrcode->qrcode_path) !!}">
     </div>
 </div>
+
+<!-- import all transactions for this qrcode -->
+@if(qrcode->user_id == Auth::user()->id || Auth::user()->role_id < 3)
+    @if(count($transactions) > 0)
+        <h4>List of Transactions </h4>
+        @include('transactions.table')
+    @else
+        <h4>No Transactions created yet.</h4>
+    @endif
+@endif
