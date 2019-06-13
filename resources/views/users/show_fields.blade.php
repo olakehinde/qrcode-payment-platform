@@ -30,6 +30,7 @@
     <p>{!! $user->created_at->format('D d M, Y h:i:s') !!}</p>
 </div>
 
+<hr>
 <!-- import all transactions for this user -->
 @if($user->id == Auth::user()->id || Auth::user()->role_id < 3)
     @if(count($transactions) > 0)
@@ -37,5 +38,14 @@
         @include('transactions.table')
     @else
         <h4>No Transactions created yet.</h4>
+    @endif
+    
+    <hr>
+
+    @if(count($qrcodes) > 0)
+        <h4>Qrcodes created by {{ $user->name }} </h4>
+        @include('qrcodes.table')
+    @else
+        <h4>No Qrcode created by {{ $user->name }}.</h4>
     @endif
 @endif
