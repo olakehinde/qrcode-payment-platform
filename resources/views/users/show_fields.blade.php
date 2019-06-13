@@ -29,3 +29,13 @@
     {!! Form::label('created_at', 'Joined:') !!}
     <p>{!! $user->created_at->format('D d M, Y h:i:s') !!}</p>
 </div>
+
+<!-- import all transactions for this user -->
+@if($user->id == Auth::user()->id || Auth::user()->role_id < 3)
+    @if(count($transactions) > 0)
+        <h4>Transactions by {{ $user->name }} </h4>
+        @include('transactions.table')
+    @else
+        <h4>No Transactions created yet.</h4>
+    @endif
+@endif
