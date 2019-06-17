@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // only logged in user can view this routes
 Route::group(['middleware' => 'auth'], function() {
-	Route::resource('qrcodes', 'QrcodeController');
+	Route::resource('qrcodes', 'QrcodeController')->middleware('checkadmin');
 	Route::resource('roles', 'RoleController');
 	Route::resource('transactions', 'TransactionController');
 	Route::resource('users', 'UserController');
