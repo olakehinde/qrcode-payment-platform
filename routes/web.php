@@ -25,4 +25,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('roles', 'RoleController');
 	Route::resource('transactions', 'TransactionController');
 	Route::resource('users', 'UserController');
+
+	Route::group(['middleware' => 'checkmoderator'], function() {
+		Route::get('/users', 'UserController@index')->name('users.index');
+	});
 });
