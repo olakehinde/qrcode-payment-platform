@@ -1,26 +1,28 @@
-<!-- User Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
-</div>
+@if(Auth::user()->role_id == 1)
+    <!-- Balance Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('balance', 'Balance:') !!}
+        {!! Form::number('balance', null, ['class' => 'form-control']) !!}
+    </div>
 
-<!-- Balance Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('balance', 'Balance:') !!}
-    {!! Form::number('balance', null, ['class' => 'form-control']) !!}
-</div>
+    <!-- Total Balance Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('total_balance', 'Total Balance:') !!}
+        {!! Form::number('total_balance', null, ['class' => 'form-control']) !!}
+    </div>
 
-<!-- Total Balance Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('total_balance', 'Total Balance:') !!}
-    {!! Form::number('total_balance', null, ['class' => 'form-control']) !!}
-</div>
+    <!-- Total Debit Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('total_debit', 'Total Credit:') !!}
+        {!! Form::number('total_debit', null, ['class' => 'form-control']) !!}
+    </div>
 
-<!-- Total Debit Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('total_debit', 'Total Debit:') !!}
-    {!! Form::number('total_debit', null, ['class' => 'form-control']) !!}
-</div>
+    <!-- Is Paid Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('is_paid', 'Paid:') !!}
+        {!! Form::number('is_paid', 0, ['class' => 'form-control']) !!}
+    </div>
+@endif
 
 <!-- Withdrawal Method Field -->
 <div class="form-group col-sm-6">
@@ -58,24 +60,6 @@
     {!! Form::text('country', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Applied For Payout Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('applied_for_payout', 'Applied For Payout:') !!}
-    {!! Form::number('applied_for_payout', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Is Paid Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('is_paid', 'Is Paid:') !!}
-    {!! Form::number('is_paid', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Last Date Applied Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('last_date_applied', 'Last Date Applied:') !!}
-    {!! Form::date('last_date_applied', null, ['class' => 'form-control','id'=>'last_date_applied']) !!}
-</div>
-
 @section('scripts')
     <script type="text/javascript">
         $('#last_date_applied').datetimepicker({
@@ -84,12 +68,6 @@
         })
     </script>
 @endsection
-
-<!-- Last Date Paid Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('last_date_paid', 'Last Date Paid:') !!}
-    {!! Form::date('last_date_paid', null, ['class' => 'form-control','id'=>'last_date_paid']) !!}
-</div>
 
 @section('scripts')
     <script type="text/javascript">

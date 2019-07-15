@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Account
+            Account: {{ $account->id }} <small>{!! $account->applied_for_payout == 1 ? 'Payout request processing...' : '' !!}</small>
         </h1>
     </section>
     <div class="content">

@@ -3,7 +3,9 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Account
+            Account <small class="text-info">-- 
+              <a href="/users/{{ $account->user['id'] }}"> {{ $account->user['email'] }}</a>
+            </small>
         </h1>
    </section>
    <div class="content">
