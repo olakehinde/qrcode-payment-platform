@@ -22,11 +22,12 @@
 	<li class="{{ Request::is('roles*') ? 'active' : '' }}">
 	    <a href="{!! route('roles.index') !!}"><i class="fa fa-user"></i><span>Roles</span></a>
 	</li>
-@endif<li class="{{ Request::is('accounts*') ? 'active' : '' }}">
-    <a href="{!! route('accounts.index') !!}"><i class="fa fa-edit"></i><span>Accounts</span></a>
+@endif
+
+<li class="{{ Request::is('accounts*') ? 'active' : '' }}">
+    <a href="{!! route('accounts.index') !!}"><i class="fa fa-line-chart"></i><span>Accounts</span></a>
 </li>
 
 <li class="{{ Request::is('accountHistories*') ? 'active' : '' }}">
-    <a href="{!! route('accountHistories.index') !!}"><i class="fa fa-edit"></i><span>Account Histories</span></a>
+    <a href="{!! route('accountHistories.index') !!}"><i class="fa fa-history"></i><span>Account Histories</span></a>
 </li>
-
