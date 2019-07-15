@@ -87,4 +87,10 @@ class User extends Model
         return $this->hasMany('App\Models\Qrcode'); 
     }
     
+    /**
+    * This user has one Account
+    */
+    public function account() {
+        return $this->hasOne('App\Models\Account'); 
+    }
 }

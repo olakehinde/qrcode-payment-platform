@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Account
  * @package App\Models
- * @version June 17, 2019, 2:19 pm UTC
+ * @version July 15, 2019, 9:02 am UTC
  *
  * @property integer user_id
  * @property float balance
@@ -19,6 +19,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string bank_name
  * @property string bank_branch
  * @property string bank_account
+ * @property string country
+ * @property integer applied_for_payout
+ * @property integer is_paid
+ * @property string last_date_applied
+ * @property string last_date_paid
  * @property string other_details
  */
 class Account extends Model
@@ -44,6 +49,11 @@ class Account extends Model
         'bank_name',
         'bank_branch',
         'bank_account',
+        'country',
+        'applied_for_payout',
+        'is_paid',
+        'last_date_applied',
+        'last_date_paid',
         'other_details'
     ];
 
@@ -63,6 +73,11 @@ class Account extends Model
         'bank_name' => 'string',
         'bank_branch' => 'string',
         'bank_account' => 'string',
+        'country' => 'string',
+        'applied_for_payout' => 'integer',
+        'is_paid' => 'integer',
+        'last_date_applied' => 'date',
+        'last_date_paid' => 'date',
         'other_details' => 'string'
     ];
 
@@ -76,8 +91,15 @@ class Account extends Model
         'balance' => 'required',
         'total_balance' => 'required',
         'total_debit' => 'required',
-        'withdrawal_method' => 'required'
+        'withdrawal_method' => 'required',
+        'applied_for_payout' => 'required',
+        'is_paid' => 'required'
     ];
 
-    
+    /**
+    * This account belongs to one User
+    */
+    public function user() {
+        return $this->belongsTo('App\Models\User'); 
+    }
 }
