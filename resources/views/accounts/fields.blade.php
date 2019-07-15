@@ -52,6 +52,54 @@
     {!! Form::text('bank_account', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Country Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('country', 'Country:') !!}
+    {!! Form::text('country', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Applied For Payout Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('applied_for_payout', 'Applied For Payout:') !!}
+    {!! Form::number('applied_for_payout', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Is Paid Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('is_paid', 'Is Paid:') !!}
+    {!! Form::number('is_paid', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Last Date Applied Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('last_date_applied', 'Last Date Applied:') !!}
+    {!! Form::date('last_date_applied', null, ['class' => 'form-control','id'=>'last_date_applied']) !!}
+</div>
+
+@section('scripts')
+    <script type="text/javascript">
+        $('#last_date_applied').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            useCurrent: false
+        })
+    </script>
+@endsection
+
+<!-- Last Date Paid Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('last_date_paid', 'Last Date Paid:') !!}
+    {!! Form::date('last_date_paid', null, ['class' => 'form-control','id'=>'last_date_paid']) !!}
+</div>
+
+@section('scripts')
+    <script type="text/javascript">
+        $('#last_date_paid').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            useCurrent: false
+        })
+    </script>
+@endsection
+
 <!-- Other Details Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('other_details', 'Other Details:') !!}
