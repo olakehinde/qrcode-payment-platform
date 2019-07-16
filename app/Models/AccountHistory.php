@@ -57,4 +57,10 @@ class AccountHistory extends Model
     ];
 
     
+    /**
+    * This accountHistories belongs to one Account
+    */
+    public function account() {
+        return $this->belongsTo('App\Models\AccountHistory'); 
+    }
 }
