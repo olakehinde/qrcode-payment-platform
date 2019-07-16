@@ -93,4 +93,12 @@ class User extends Model
     public function account() {
         return $this->hasOne('App\Models\Account'); 
     }
+
+     /**
+    * This user has many AccountHistories 
+    */
+    public function account_histories() {
+        return $this->hasMany('App\Models\AccountHistory'); 
+    }
+    
 }
