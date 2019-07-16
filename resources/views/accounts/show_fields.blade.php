@@ -1,3 +1,4 @@
+<div class="row">
 <div class="col-md-6">
     <!-- User name Field -->
     <div class="form-group">
@@ -108,5 +109,20 @@
     <div class="form-group">
         {!! Form::label('total_debit', 'Total Debit:') !!}
         <p>&#x20A6;{!! number_format($account->total_debit) !!}</p>
+    </div>
+</div>
+</div>
+<hr>
+<!-- Add Account History section content here -->
+<h4>Account History</h4>
+<div class="box box-primary">
+    <div class="box-body">
+        <div class="row" style="padding-left: 20px">
+            @if(count($accountHistories) < 1)
+                <p>No Account History data yet</p>
+            @else
+                @include('account_histories.table')
+            @endif
+        </div>
     </div>
 </div>
