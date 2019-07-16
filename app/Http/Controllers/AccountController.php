@@ -81,7 +81,9 @@ class AccountController extends AppBaseController
             return redirect(route('accounts.index'));
         }
 
-        return view('accounts.show')->with('account', $account);
+        $accountHistories = $account->account_histories;
+
+        return view('accounts.show')->with('account', $account)->with('accountHistories', $accountHistories);
     }
 
     /**
