@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Auth;
+use App\Models\Account;
+use App\Models\AccountHistory;
+use Carbon\Carbon;
 
 class AccountController extends AppBaseController
 {
@@ -34,6 +38,78 @@ class AccountController extends AppBaseController
 
         return view('accounts.index')
             ->with('accounts', $accounts);
+    }
+
+    /**
+    * Allows the Account owner to apply/request for a payout.
+    *
+    * @param Request $request
+    * @return Response
+    */
+    public function apply_for_payout (Request $request) {
+        $account = $this->accountRepository->findWithoutFail($request->apply_for_payout);
+
+        if (empty($account)) {
+            Flash::error('Account not found');
+            return redirect()->back();
+        }
+
+        if (Auth::user()->id != $account->user_id) {
+            Flash::error('Permission not granted. Unauthorized access!!!');
+            return redirect()->back();
+        }
+
+        $apply = Account::where(['id'=>$account->id])->update([
+            'applied_for_payout' => 1,
+            'is_paid' => 0,
+            'last_date_applied' => Carbon::now()
+        ]);
+
+        if ($apply) {
+            AccountHistory::create([
+                'user_id' => Auth::user()->id,
+                'account_id' => $account->id,
+                'status_message' => 'Payout initiated successfully by '.Auth::user()->name
+            ]);
+            Flash::success('You have successfully applied for Payout'); 
+        }
+        return redirect()->back();
+    }
+
+    /**
+    * Allows the Admin to confirm or approve the 'apply_for_payout' request.
+    *
+    * @param Request $request
+    * @return Response
+    */
+    public function confirm_pay (Request $request) {
+        $account = $this->accountRepository->findWithoutFail($request->confirm_pay);
+
+        if (empty($account)) {
+            Flash::error('Account not found');
+            return redirect()->back();
+        }
+
+        if (Auth::user()->role_id > 2) {
+            Flash::error('Permission not granted. Unauthorized access!!!');
+            return redirect()->back();
+        }
+
+        $apply = Account::where(['id'=>$account->id])->update([
+            'applied_for_payout' => 0,
+            'is_paid' => 1,
+            'last_date_paid' => Carbon::now()
+        ]);
+
+        if ($apply) {
+            AccountHistory::create([
+                'user_id' => $account->user_id,
+                'account_id' => $account->id,
+                'status_message' => 'Payout initiated successfully'
+            ]);
+            Flash::success('Payment confirmed successfully by '.Auth::user()->name); 
+        }
+        return redirect()->back();
     }
 
     /**
