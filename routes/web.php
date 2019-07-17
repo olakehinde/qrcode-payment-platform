@@ -21,14 +21,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // only logged in user can view this routes
 Route::group(['middleware' => 'auth'], function() {
-	Route::resource('qrcodes', 'QrcodeController')->middleware('checkadmin');
-	Route::resource('roles', 'RoleController');
 	Route::resource('transactions', 'TransactionController');
 	Route::resource('users', 'UserController');
 	Route::resource('accounts', 'AccountController');
 	Route::resource('accountHistories', 'AccountHistoryController');
 
+	Route::post('/accounts/apply_for_payout', 'AccountController@apply_for_payout')->name('accounts.apply_for_payout');
+
 	Route::group(['middleware' => 'checkmoderator'], function() {
 		Route::get('/users', 'UserController@index')->name('users.index');
+	});
+
+	Route::group(['middleware' => 'checkadmin'], function() {
+		Route::resource('qrcodes', 'QrcodeController');
+		Route::post('/accounts/confirm_pay', 'AccountController@confirm_pay')->name('accounts.confirm_pay');
+		Route::resource('roles', 'RoleController');
 	});
 });
