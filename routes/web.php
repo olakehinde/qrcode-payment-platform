@@ -22,19 +22,25 @@ Route::get('/home', 'HomeController@index')->name('home');
 // only logged in user can view this routes
 Route::group(['middleware' => 'auth'], function() {
 	Route::resource('transactions', 'TransactionController');
-	Route::resource('users', 'UserController');
-	Route::resource('accounts', 'AccountController');
+	Route::resource('users', 'UserController')->except(['show']);
+	Route::resource('accounts', 'AccountController')->except(['show']);
 	Route::resource('accountHistories', 'AccountHistoryController');
 
 	Route::post('/accounts/apply_for_payout', 'AccountController@apply_for_payout')->name('accounts.apply_for_payout');
+	Route::get('/accounts/show/{id?}', 'AccountController@show')->name('accounts.show');
+	Route::get('/users/show/{id?}', 'UserController@show')->name('users.show');
 
 	Route::group(['middleware' => 'checkmoderator'], function() {
 		Route::get('/users', 'UserController@index')->name('users.index');
+		Route::resource('qrcodes', 'QrcodeController');
+		Route::post('/accounts/confirm_pay', 'AccountController@confirm_pay')->name('accounts.confirm_pay');
+		Route::post('/accounts', 'AccountController@index')->name('accounts.index');
+		Route::post('/accountHistories', 'AccountHistoryController@index')->name('accountHistories.index');
 	});
 
 	Route::group(['middleware' => 'checkadmin'], function() {
-		Route::resource('qrcodes', 'QrcodeController');
-		Route::post('/accounts/confirm_pay', 'AccountController@confirm_pay')->name('accounts.confirm_pay');
+		Route::post('/accountHistories/create', 'AccountHistoryController@create')->name('accountHistories.create');
+		Route::post('/accounts/create', 'AccountController@create')->name('accounts.create');
 		Route::resource('roles', 'RoleController');
 	});
 });
