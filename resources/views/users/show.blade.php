@@ -14,9 +14,11 @@
                 <div class="row" style="padding-left: 20px">
                     @include('users.show_fields')
                 </div>
-                <a href="{!! route('users.index') !!}" class="btn btn-primary">
-                    <i class="fa fa-arrow-left"></i> Back
-                </a>
+                @if(Auth::user()->role_id < 3)
+                    <a href="{!! route('users.index') !!}" class="btn btn-primary">
+                        <i class="fa fa-arrow-left"></i> Back
+                    </a>
+                @endif
             </div>
         </div>
     </div>
