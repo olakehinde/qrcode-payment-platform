@@ -1,5 +1,5 @@
 <!-- All users can access their profile-->
-<li class="{{ Request::is('users*') ? 'active' : '' }}">
+<li class="{{ Request::is('users/show') ? 'active' : '' }}">
     <a href="{!! route('users.show') !!}"><i class="fa fa-user"></i><span> My Profile</span></a>
 </li>
 
@@ -22,7 +22,7 @@
 
 <!-- Moderator -->
 @if(Auth::user()->role_id < 3)
-	<li class="{{ Request::is('users*') ? 'active' : '' }}">
+	<li class="{{ Request::is('users') ? 'active' : '' }}">
 	    <a href="{!! route('users.index') !!}"><i class="fa fa-users"></i><span>Users</span></a>
 	</li>
 
