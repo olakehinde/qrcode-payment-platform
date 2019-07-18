@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use App\Models\Transaction;
+use Auth;
 
 class TransactionController extends AppBaseController
 {
@@ -29,11 +31,14 @@ class TransactionController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $this->transactionRepository->pushCriteria(new RequestCriteria($request));
-        $transactions = $this->transactionRepository->all();
-
-        return view('transactions.index')
-            ->with('transactions', $transactions);
+        if (Auth::user()->role_id < 3) {
+            $this->transactionRepository->pushCriteria(new RequestCriteria($request));
+            $transactions = $this->transactionRepository->all();
+        }
+        else {
+            $transactions = Transaction::where('user_id', Auth::user()->id)->get();
+        }
+        return view('transactions.index')->with('transactions', $transactions);
     }
 
     /**

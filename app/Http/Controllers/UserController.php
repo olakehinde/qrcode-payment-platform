@@ -11,6 +11,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\Role;
+use Auth;
 
 class UserController extends AppBaseController
 {
@@ -33,8 +34,7 @@ class UserController extends AppBaseController
         $this->userRepository->pushCriteria(new RequestCriteria($request));
         $users = $this->userRepository->all();
 
-        return view('users.index')
-            ->with('users', $users);
+        return view('users.index')->with('users', $users);
     }
 
     /**
@@ -72,9 +72,14 @@ class UserController extends AppBaseController
      *
      * @return Response
      */
-    public function show($id)
+    public function show($id = null)
     {
-        $user = $this->userRepository->findWithoutFail($id);
+        if (!isset($id)) {
+            $user = $this->userRepository->findWithoutFail(Auth::user()->id);
+        }
+        else {
+            $user = $this->userRepository->findWithoutFail($id);
+        }
 
         if (empty($user)) {
             Flash::error('User not found');
