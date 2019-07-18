@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::group(['middleware' => 'checkmoderator'], function() {
 		Route::get('/users', 'UserController@index')->name('users.index');
-		Route::resource('qrcodes', 'QrcodeController');
+		Route::resource('qrcodes', 'QrcodeController')->except(['show']);
 		Route::post('/accounts/confirm_pay', 'AccountController@confirm_pay')->name('accounts.confirm_pay');
 		Route::post('/accounts', 'AccountController@index')->name('accounts.index');
 		Route::post('/accountHistories', 'AccountHistoryController@index')->name('accountHistories.index');
@@ -44,3 +44,5 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::resource('roles', 'RoleController');
 	});
 });
+
+Route::get('/qrcodes/{id}', 'QrcodeController@show')->name('qrcodes.show');
