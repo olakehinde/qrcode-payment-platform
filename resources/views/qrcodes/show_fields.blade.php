@@ -24,7 +24,7 @@
     </div>
     <hr>
 
-    @if ($qrcode->user_id == Auth::user()->id || Auth::user()->role_id < 3)
+    @if (!Auth::guest() && ($qrcode->user_id == Auth::user()->id || Auth::user()->role_id < 3))
         <!-- User Id Field -->
         <div class="form-group">
             {!! Form::label('user_id', 'Owner:') !!}
@@ -68,7 +68,7 @@
 </div>
 
 <!-- import all transactions for this qrcode -->
-@if($qrcode->user_id == Auth::user()->id || Auth::user()->role_id < 3)
+@if(!Auth::guest() && ($qrcode->user_id == Auth::user()->id || Auth::user()->role_id < 3))
     @if(count($transactions) > 0)
         <h4>List of Transactions </h4>
         @include('transactions.table')
