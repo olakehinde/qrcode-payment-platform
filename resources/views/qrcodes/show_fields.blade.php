@@ -71,13 +71,13 @@
           <div class="col-md-8 col-md-offset-2">
             <p>
                 <div>
-                    Lagos Eyo Print Tee Shirt
-                    ₦ 2,950
+                    {{ $qrcode->product_name }}
+                    ₦ {{ $qrcode->amount }}
                 </div>
             </p>
             <input type="hidden" name="email" value="olakehinde59@gmail.com"> {{-- required --}}
             <input type="hidden" name="orderID" value="{{$qrcode->id}}">
-            <input type="hidden" name="amount" value="{{$qrcode->amount}}"> {{-- required in kobo --}}
+            <input type="hidden" name="amount" value="{{$qrcode->amount * 100}}"> {{-- required in kobo --}}
             <input type="hidden" name="quantity" value="3">
             <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
