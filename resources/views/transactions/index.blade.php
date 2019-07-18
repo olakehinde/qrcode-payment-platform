@@ -10,13 +10,15 @@
         @include('flash::message')
 
         <div class="clearfix"></div>
-        <div class="box box-primary">
-            <div class="box-body">
-                    @include('transactions.table')
+            <div class="box box-primary">
+                <div class="box-body">
+                    @if(count($transactions) > 0)
+                        @include('transactions.table')
+                    @else
+                        <h4>No transactions performed yet</h4>
+                    @endif
+                </div>
             </div>
-        </div>
-        <div class="text-center">
-        
         </div>
     </div>
 @endsection

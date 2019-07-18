@@ -20,7 +20,7 @@
                 <td>{!! ($account->applied_for_payout == 1 ? 'Payout request made. Payment pending' : ($account->is_paid == 1 ? 'Payout paid' : 'No payment request')) !!}</td>
                 <td>
                     <div class='btn-group'>
-                        <a href="{!! route('accounts.edit', [$account->id]) !!}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{!! route('accounts.edit', [$account->id]) !!}" class='btn btn-info btn-xs'><i class="glyphicon glyphicon-edit"></i> Edit</a>
                     </div>
                 </td>
             </tr>

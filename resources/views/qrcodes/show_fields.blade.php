@@ -27,14 +27,14 @@
     @if ($qrcode->user_id == Auth::user()->id || Auth::user()->role_id < 3)
         <!-- User Id Field -->
         <div class="form-group">
-            {!! Form::label('user_id', 'User Id:') !!}
-            <p>{!! $qrcode->user_id !!}</p>
+            {!! Form::label('user_id', 'Owner:') !!}
+            <p>{!! $qrcode->user['name'] !!}</p>
         </div>
 
         <!-- Callback Url Field -->
         <div class="form-group">
             {!! Form::label('callback_url', 'Callback Url:') !!}
-            <p>{!! $qrcode->callback_url !!}</p>
+            <p><a href="{!! $qrcode->callback_url !!}">{!! $qrcode->callback_url !!}</a></p>
         </div>
 
         <!-- Status Field -->
@@ -47,13 +47,13 @@
 
         <!-- Created At Field -->
         <div class="form-group">
-            {!! Form::label('created_at', 'Created At:') !!}
+            {!! Form::label('created_at', 'Created On:') !!}
             <p>{!! $qrcode->created_at->format('D d M, Y') !!}</p>
         </div>
 
         <!-- Updated At Field -->
         <div class="form-group">
-            {!! Form::label('updated_at', 'Updated At:') !!}
+            {!! Form::label('updated_at', 'Updated On:') !!}
             <p>{!! $qrcode->updated_at->format('D d M, Y') !!}</p>
         </div>
     @endif
