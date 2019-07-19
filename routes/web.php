@@ -49,3 +49,4 @@ Route::get('/qrcodes/{id}', 'QrcodeController@show')->name('qrcodes.show');
 
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::post('/qrcodes/show_pay', 'QrcodeController@show_pay')->name('qrcodes.show_pay');
