@@ -13,6 +13,10 @@ use SimpleSoftwareIO\QrCode;
 use App\Models\Qrcode as QrCodeModel;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\Transaction;
+use Paystack;
 
 class QrcodeController extends AppBaseController
 {
@@ -176,5 +180,36 @@ class QrcodeController extends AppBaseController
         Flash::success('Qrcode deleted successfully.');
 
         return redirect(route('qrcodes.index'));
+    }
+
+    public function show_pay (Request $request) {
+        $input = $request->all();
+
+        // get the user details
+        $user = User::where('email', $input['email'])->first();
+
+        if (empty($user)) {
+            //use the supplied email to create a new user
+            $user = User::create([
+                'name' => $input['email'],
+                'email' => $input['email'],
+                'password' => Hash::make($input['email']),
+            ]);
+        }
+
+        $qrcode = QrCodeModel::where('id', $input['qrcode_id'])->first();
+
+        //create a transaction record
+        $transaction = Transaction::create([
+            'user_id' => $user->id,
+            'qrcode_id' => $qrcode->id,
+            'qrcode_owner_id' => $qrcode->user_id,
+            'amount' => $qrcode->amount,
+            'payment_method' => 'Paystack/card',
+            'status' => 'Payment Initialized...',
+        ]);
+        // dd($transaction);
+
+        return view('qrcodes.paystack-form', compact("user", "qrcode", "transaction"));
     }
 }
